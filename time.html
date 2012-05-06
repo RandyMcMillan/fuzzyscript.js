@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function startTime() {
+        var today=new Date();
+        var d=today.getDay();
+        var h=today.getHours();
+        var m=today.getMinutes();
+        var s=today.getSeconds();
+        var mm=today.getMilliseconds();
+        // add a zero in front of numbers<10
+        m=checkTime(m);
+        s=checkTime(s);
+        d=checkTime(d);
+        console.log(d+":"+h+":"+m+":"+s+":"+mm);
+        document.getElementById('txt').innerHTML=d+":"+h+":"+m+":"+s+":"+mm;
+        now=d+""+h+""+m+""+s+""+mm;
+          console.log(now);
+        t=setTimeout('startTime()',500);
+        //return now;
+      }
+
+      function checkTime(i) {
+          if (i<10) {
+            i="0" + i;
+          }
+        return i;
+      }
+    </script>
+  </head>
+    <body onload="startTime()">
+      <div id="txt"></div>
+    </body>
+</html>
+
+

@@ -5,9 +5,40 @@
 //http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/
 //http://net.tutsplus.com/tutorials/javascript-ajax/the-essentials-of-writing-high-quality-javascript/
 
+(function timeStamp (){
+
+        var today=new Date();
+        var year=today.getFullYear();
+        var month=today.getMonth();
+        var d=today.getDay();
+        var h=today.getHours();
+        var m=today.getMinutes();
+        var s=today.getSeconds();
+        var mm=today.getMilliseconds();
+        // add a zero in front of numbers<10
+        m=checkTime(m);
+        s=checkTime(s);
+        d=checkTime(d);
+        console.log(year+":"+month+":"+d+":"+h+":"+m+":"+s+":"+mm);
+        //document.getElementById('txt').innerHTML=d+":"+h+":"+m+":"+s+":"+mm;
+        now=year+""+month+""+d+""+h+""+m+""+s+""+mm;
+        console.log('now = '+now);
+
+        function checkTime(i) {
+          if (i<10) {
+            i="0" + i;
+          }
+        return i;
+      }
+})();
+
+
 if (typeof Fuzzy === "undefined") {
 
-Fuzzy = {}; Fuzzy.Date = Date
+Fuzzy = {};
+
+Fuzzy.timeStamp = now;
+console.log('Fuzzy.timeStamp = '+Fuzzy.timeStamp);
 
 }
 
@@ -224,27 +255,63 @@ document.write('intervalsSince = '+day+' New Epoch.</br>')
 
 
 /*
+ *
+ *
+ *
+<html>
+<head>
+<script type="text/javascript">
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout('startTime()',500);
+}
 
-JavaScript routines
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
+</head>
 
-Convert an epoch to human readable date:
+<body onload="startTime()">
+<div id="txt"></div>
+</body>
+</html>
 
-var myDate = new Date( your epoch date *1000);
-document.write(myDate.toGMTString()+"<br>"+myDate.toLocaleString());
-The example above gives the following output (with epoch date 1):
 
-Thu, 01 Jan 1970 00:00:01 GMT
-December 31, 1969 7:00:01 PM EST
-You can also use getFullYear, getMonth, getDay etc. See documentation below.
-
-Convert human readable dates to epoch:
-
-var myDate = new Date("July 1, 1978 02:30:00"); // Your timezone!
-var myEpoch = myDate.getTime()/1000.0;
-document.write(myEpoch);
-The example above gives the following output:
-
-268122600
 
 
 */
+//JavaScript routines
+
+//Convert an epoch to human readable date:
+
+//var myDate = new Date( your epoch date *1000);
+//document.write(myDate.toGMTString()+"<br>"+myDate.toLocaleString());
+//The example above gives the following output (with epoch date 1):
+
+//Thu, 01 Jan 1970 00:00:01 GMT
+//December 31, 1969 7:00:01 PM EST
+//You can also use getFullYear, getMonth, getDay etc. See documentation below.
+
+//Convert human readable dates to epoch:
+
+//var myDate = new Date("July 1, 1978 02:30:00"); // Your timezone!
+//var myEpoch = myDate.getTime()/1000.0;
+//document.write(myEpoch);
+//The example above gives the following output:
+
+//268122600
+
